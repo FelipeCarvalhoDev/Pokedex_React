@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import Header from './components/Header';
-import Filter from './components/Filter';
+import App from './App';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <Filter />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
