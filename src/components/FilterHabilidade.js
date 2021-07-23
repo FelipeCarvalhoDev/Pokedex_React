@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Filter({ value, onChange }) {
+function FilterHabilidade({ value, onChange }) {
   const classes = useStyles();
   function handleChange(event) {
     onChange(event.target.value)
@@ -33,10 +33,10 @@ function Filter({ value, onChange }) {
   return (
     <div className="filter">
         <form className={classes.root} noValidate autoComplete="off">
-            <TextField id="standard-basic" label="Nome ou ID do Pokémon" value={value} onChange={handleChange} />
+            <TextField id="standard-basic" label="Habilidade" value={value} onChange={handleChange} />
         </form>
     </div>
   );
 }
 
-export default Filter;
+export default FilterHabilidade;
