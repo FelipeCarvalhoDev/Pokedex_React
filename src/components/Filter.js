@@ -34,7 +34,6 @@ function Filter({ value, onChange }) {
     <div className="filter">
         <form className={classes.root} noValidate autoComplete="off">
             <TextField id="standard-basic" label="Nome ou ID do Pokémon" value={value} onChange={handleChange} />
-            <TextField id="standard-basic" label="Habilidade" />
         </form>
     </div>
   );

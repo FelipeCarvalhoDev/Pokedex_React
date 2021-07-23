@@ -3,3 +3,11 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    .MuiButton-contained{
+        background-color:#fff;
+    }
+}

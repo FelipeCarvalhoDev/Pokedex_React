@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react';
+import Button from '@material-ui/core/Button';
 import './assets/scss/App.scss';
 import Header from './components/Header';
 import Filter from './components/Filter';
 import Card from './components/Card';
 
-const api = 'https://pokeapi.co/api/v2/pokemon/'
 
 function App(){
-const [name_id, setNameId] = useState('');
+const [api, setApi] = useState('https://pokeapi.co/api/v2/pokemon/')
 const [info, setInfo] = useState({});
+const [name_id, setNameId] = useState('');
+const [nextUrl, setNext] = useState('');
+const [prevUrl, setPrev] = useState('');
 
 useEffect(() => {
   if (name_id) {
-    fetch(`${api}${name_id}`)
+    fetch(`https://pokeapi.co/api/v2/pokemon/${name_id}`)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response)
         setInfo(response)
       })
   } else {
@@ -23,14 +25,20 @@ useEffect(() => {
       .then((response) => response.json())
       .then((response) => {
           setInfo(response)
+          setNext(response.next)
+          setPrev(response.previous)
       })
   }
-}, [name_id]);
+}, [name_id, api]);
 
 return (
     <div className="app">
       <Header />
       <Filter value={name_id} onChange={(search) => setNameId(search)}/>
+      <nav>
+        <Button variant="contained" onClick={() => setApi(prevUrl)} disabled={!prevUrl || name_id}>Anteriores</Button>
+        <Button variant="contained" onClick={() => setApi(nextUrl)} disabled={name_id}>Próximos</Button>
+      </nav>
       <div className="results">
         {info.results &&
           info.results.map((pokemon) => (
